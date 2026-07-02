@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary palette */
+  --color-coral: #FF6B6B;
+  --color-teal: #4ECDC4;
+  --color-sunny: #FFE66D;
+  --color-lavender: #A78BFA;
+  --color-mint: #95E1D3;
+
+  /* Surfaces */
+  --color-bg: #FFFBF5;
+  --color-bg-secondary: #FFF7EB;
+  --color-surface: #FFFFFF;
+  --color-surface-elevated: #FFFFFF;
+
+  /* Text */
+  --color-text-primary: #1A1A2E;
+  --color-text-secondary: #4A4A68;
+  --color-text-muted: #8888A0;
+
+  /* Spacing rhythm */
+  --section-padding: clamp(4rem, 8vw, 8rem);
+  --content-max-width: 1280px;
+
+  /* Fonts */
+  --font-quicksand: 'Quicksand', system-ui, sans-serif;
+  --font-inter: 'Inter', system-ui, sans-serif;
+}
+
+/* Base resets */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Typography utilities */
+@layer components {
+  .heading-xl {
+    @apply font-heading font-bold tracking-tight;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1.1;
+  }
+
+  .heading-lg {
+    @apply font-heading font-bold tracking-tight;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.15;
+  }
+
+  .heading-md {
+    @apply font-heading font-semibold tracking-tight;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 1.2;
+  }
+
+  .heading-sm {
+    @apply font-heading font-semibold;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    line-height: 1.3;
+  }
+
+  .body-lg {
+    @apply font-body;
+    font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+    line-height: 1.6;
+  }
+
+  .body-md {
+    @apply font-body;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* Glass morphism */
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, var(--color-coral), var(--color-lavender), var(--color-teal));
+  }
+
+  /* Section container */
+  .section-container {
+    @apply mx-auto w-full;
+    max-width: var(--content-max-width);
+    padding-left: clamp(1rem, 4vw, 2rem);
+    padding-right: clamp(1rem, 4vw, 2rem);
+  }
+
+  /* Animated blob background */
+  .blob {
+    @apply absolute rounded-full opacity-30 blur-3xl;
+    mix-blend-mode: multiply;
+  }
+
+  /* Card base */
+  .card {
+    @apply bg-white rounded-3xl shadow-soft transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply shadow-card-hover;
+    transform: translateY(-4px);
+  }
+
+  /* Button squish effect */
+  .btn-squish:active {
+    transform: scale(0.95);
+    transition: transform 0.15s ease;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-mint);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-teal);
+}
