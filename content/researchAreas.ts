@@ -15,7 +15,6 @@ export const researchAreas: ResearchArea[] = [
       "Reinforcement Learning",
       "AutoML & Neural Architecture Search",
     ],
-    publications: [],
   },
   {
     slug: "computer-vision",
@@ -31,7 +30,6 @@ export const researchAreas: ResearchArea[] = [
       "Video Analytics",
       "Medical Image Analysis",
     ],
-    publications: [],
   },
   {
     slug: "edge-ai",
@@ -47,7 +45,6 @@ export const researchAreas: ResearchArea[] = [
       "Hardware-aware NAS",
       "TinyML",
     ],
-    publications: [],
   },
   {
     slug: "internet-of-things",
@@ -63,7 +60,6 @@ export const researchAreas: ResearchArea[] = [
       "MQTT & IoT Protocols",
       "Digital Twins",
     ],
-    publications: [],
   },
   {
     slug: "robotics",
@@ -79,7 +75,6 @@ export const researchAreas: ResearchArea[] = [
       "Sim2Real Transfer",
       "Human-Robot Interaction",
     ],
-    publications: [],
   },
   {
     slug: "6g-isac",
@@ -95,6 +90,5 @@ export const researchAreas: ResearchArea[] = [
       "Spectrum Sharing",
       "Wireless AI",
     ],
-    publications: [],
   },
 ];

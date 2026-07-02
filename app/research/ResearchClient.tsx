@@ -23,6 +23,8 @@ const iconMap: Record<string, React.ComponentType<{ className?: string; style?: 
   Radio,
 };
 
+import { publications as allPublications } from "@/content/publications";
+
 export function ResearchClient() {
   return (
     <div className="pt-28 pb-20 md:pt-36 md:pb-32">
@@ -84,43 +86,87 @@ export function ResearchClient() {
         />
 
         <div className="max-w-2xl mx-auto">
-          {/* Check if any research area has publications */}
-          {researchAreas.every(
-            (area) => !area.publications || area.publications.length === 0
-          ) ? (
-            <div className="text-center py-16">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-3xl bg-surface-50 flex items-center justify-center">
-                <FileText className="w-10 h-10 text-[var(--color-text-muted)]" />
-              </div>
-              <h3 className="heading-sm text-[var(--color-text-primary)] mb-2">
-                Publications coming soon
-              </h3>
-              <p className="text-sm text-[var(--color-text-muted)] max-w-md mx-auto">
-                Our research publications and patents will be listed here as they
-                are published. Check back soon!
-              </p>
-            </div>
-          ) : (
-            <div className="space-y-4">
-              {researchAreas
-                .flatMap((area) => area.publications || [])
-                .map((pub) => (
-                  <div key={pub.title} className="card p-5">
-                    <div className="flex items-start gap-3">
-                      <BookOpen className="w-4 h-4 text-coral-400 mt-1 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-medium text-sm text-[var(--color-text-primary)]">
-                          {pub.title}
-                        </h4>
-                        <p className="text-xs text-[var(--color-text-muted)] mt-1">
-                          {pub.authors.join(", ")} • {pub.venue} • {pub.year}
-                        </p>
-                      </div>
-                    </div>
+          {/* Check if any publications exist */}
+          {(() => {
+            if (allPublications.length === 0) {
+              return (
+                <div className="text-center py-16">
+                  <div className="w-20 h-20 mx-auto mb-6 rounded-3xl bg-surface-50 flex items-center justify-center">
+                    <FileText className="w-10 h-10 text-[var(--color-text-muted)]" />
                   </div>
-                ))}
-            </div>
-          )}
+                  <h3 className="heading-sm text-[var(--color-text-primary)] mb-2">
+                    Publications coming soon
+                  </h3>
+                  <p className="text-sm text-[var(--color-text-muted)] max-w-md mx-auto">
+                    Our research publications and patents will be listed here as
+                    they are published. Check back soon!
+                  </p>
+                </div>
+              );
+            }
+
+            const patents = allPublications.filter((p) => p.type === "Patent");
+            const conferences = allPublications.filter(
+              (p) => p.type === "Conference"
+            );
+            const journals = allPublications.filter(
+              (p) => p.type === "Journal"
+            );
+
+            const renderPubList = (title: string, pubs: typeof allPublications) => {
+              if (pubs.length === 0) return null;
+              return (
+                <div className="mb-10">
+                  <h3 className="font-heading font-semibold text-lg text-[var(--color-text-primary)] mb-4 border-b border-[var(--color-border)] pb-2">
+                    {title}
+                  </h3>
+                  <div className="space-y-4">
+                    {pubs.map((pub, i) => {
+                      const content = (
+                        <div className={`card p-5 ${pub.link ? "hover:border-coral-300 hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer group" : ""}`}>
+                          <div className="flex items-start gap-3">
+                            <BookOpen className="w-4 h-4 text-coral-400 mt-1 flex-shrink-0" />
+                            <div className="flex-1">
+                              <h4 className="font-medium text-sm text-[var(--color-text-primary)] group-hover:text-coral-500 transition-colors duration-300">
+                                {pub.title}
+                              </h4>
+                              <p className="text-xs text-[var(--color-text-muted)] mt-1">
+                                {pub.authors.join(", ")} • {pub.year}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      );
+
+                      if (pub.link) {
+                        return (
+                          <a
+                            key={i}
+                            href={pub.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block"
+                            title="View Article"
+                          >
+                            {content}
+                          </a>
+                        );
+                      }
+                      return <div key={i}>{content}</div>;
+                    })}
+                  </div>
+                </div>
+              );
+            };
+
+            return (
+              <div>
+                {renderPubList("Patents", patents)}
+                {renderPubList("Conferences", conferences)}
+                {renderPubList("Journals", journals)}
+              </div>
+            );
+          })()}
         </div>
       </div>
     </div>

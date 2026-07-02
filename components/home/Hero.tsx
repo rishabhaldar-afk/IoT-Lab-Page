@@ -111,11 +111,13 @@ export function Hero() {
       {/* Content */}
       <div className="section-container relative z-10 text-center px-4">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur-sm border border-white/40 shadow-soft mb-8">
-          <Sparkles className="w-4 h-4 text-sunny-500" />
-          <span className="text-sm font-medium text-[var(--color-text-secondary)]">
-            Powered by Intel Unnati × Karunya Institute
-          </span>
+        <div className="flex items-center justify-center gap-4 mb-4">
+          <Sparkles className="w-10 h-10 md:w-14 md:h-14 text-sunny-500" />
+          <h1 className="heading-xl">
+            <span className="gradient-text">
+              Intel Unnati AIIoT Lab
+            </span>
+          </h1>
         </div>
 
         <h1

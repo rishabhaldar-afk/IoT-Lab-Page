@@ -107,7 +107,8 @@ export function AboutClient() {
         <div className="text-center max-w-3xl mx-auto mb-20 md:mb-28">
           <h1 className="heading-xl">
             About the{" "}
-            <span className="gradient-text">AIIoT Lab</span>
+            <br/>
+            <span className="gradient-text">Intel Unnati AIIoT Lab</span>
           </h1>
           <p className="body-lg text-[var(--color-text-secondary)] mt-6">
             The Intel Unnati AIIoT Lab was established under a Memorandum of

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import type { Person } from "@/lib/types";
 import { Badge } from "@/components/ui/Badge";
 import { User, Award } from "lucide-react";
@@ -20,16 +21,27 @@ export function PersonCard({ person }: PersonCardProps) {
   const color = roleColors[person.role] || "#A78BFA";
 
   return (
-    <div className="card p-6 text-center group" id={`person-${person.slug}`}>
-      {/* Avatar placeholder */}
-      <div
-        className="w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
-        style={{
-          background: `linear-gradient(135deg, ${color}20, ${color}40)`,
-        }}
-      >
-        <User className="w-10 h-10" style={{ color }} />
-      </div>
+    <div className="card p-10 text-center group border-2 border-black bg-gradient-to-br from-yellow-100 via-pink-100 to-cyan-100" id={`person-${person.slug}`}>
+      {person.hasRealPhoto ? (
+        <div className="w-32 h-32 mx-auto mb-5 rounded-[2rem] overflow-hidden relative transition-transform duration-300 group-hover:scale-110 shadow-md">
+          <Image
+            src={`/images/people/${person.slug}.jpg`}
+            alt={person.name}
+            fill
+            className="object-cover"
+            sizes="128px"
+          />
+        </div>
+      ) : (
+        <div
+          className="w-32 h-32 mx-auto rounded-[2rem] flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
+          style={{
+            background: `linear-gradient(135deg, ${color}20, ${color}40)`,
+          }}
+        >
+          <User className="w-14 h-14" style={{ color }} />
+        </div>
+      )}
 
       <Badge color={color}>{person.role}</Badge>
 

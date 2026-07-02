@@ -126,16 +126,6 @@ export default function HomePage() {
                 Explore Research
               </Button>
             </Link>
-            <Link href="/contact">
-              <Button
-                variant="outline"
-                size="lg"
-                className="!border-white !text-white hover:!bg-white/10"
-                id="cta-contact"
-              >
-                Get in Touch
-              </Button>
-            </Link>
           </div>
         </div>
       </section>

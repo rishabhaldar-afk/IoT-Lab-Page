@@ -52,14 +52,12 @@ export interface ResearchArea {
   icon: string;
   color: string;
   topics: string[];
-  publications?: Publication[];
 }
 
 export interface Publication {
   title: string;
   authors: string[];
-  venue: string;
   year: number;
-  doi?: string;
+  link?: string;
   type: "Journal" | "Conference" | "Patent";
 }

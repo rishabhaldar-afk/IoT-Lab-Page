@@ -94,6 +94,7 @@ const config: Config = {
         "slide-in-right": "slideInRight 0.4s ease-out forwards",
         "slide-in-bottom": "slideInBottom 0.4s ease-out forwards",
         blob: "blob 7s infinite",
+        "gradient-xy": "gradient-xy 10s ease infinite",
       },
       keyframes: {
         wiggle: {
@@ -130,6 +131,16 @@ const config: Config = {
           "33%": { transform: "translate(30px, -50px) scale(1.1)" },
           "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
           "100%": { transform: "translate(0px, 0px) scale(1)" },
+        },
+        "gradient-xy": {
+          "0%, 100%": {
+            "background-size": "400% 400%",
+            "background-position": "0% 0%",
+          },
+          "50%": {
+            "background-size": "200% 200%",
+            "background-position": "100% 100%",
+          },
         },
       },
       boxShadow: {

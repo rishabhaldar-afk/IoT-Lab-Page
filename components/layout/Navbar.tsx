@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, Cpu } from "lucide-react";
 
@@ -9,11 +10,10 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/devices", label: "Devices" },
-  { href: "/people", label: "People" },
   { href: "/research", label: "Research" },
   { href: "/events", label: "Events" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/contact", label: "Contact" },
+  { href: "/people", label: "People" },
 ];
 
 export function Navbar() {
@@ -51,7 +51,7 @@ export function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "glass shadow-soft py-3"
+            ? "bg-white shadow-soft py-3 border-b border-surface-200"
             : "bg-transparent py-5"
         }`}
       >
@@ -62,8 +62,14 @@ export function Navbar() {
             className="flex items-center gap-2.5 group"
             id="nav-logo"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-coral-500 to-teal-400 flex items-center justify-center shadow-md group-hover:shadow-glow transition-shadow duration-300">
-              <Cpu className="w-5 h-5 text-white" />
+            <div className="w-12 h-12 relative flex items-center justify-center">
+              <Image 
+                src="/images/karunya-logo.png" 
+                alt="Karunya Logo" 
+                fill 
+                sizes="48px"
+                className="object-contain"
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-heading font-bold text-sm leading-tight text-[var(--color-text-primary)]">
